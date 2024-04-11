@@ -16,8 +16,7 @@ int is_prime(int number) {
 }
 
 int main(int argc, char *argv[]) {
-	int output_count, number, divider, maxdivider, mod, cycle_count;
-	bool prime = false;
+	int output_count, number, cycle_count;
 	
 	if (argc > 1) {
 		number = atoi(argv[1]);
