@@ -3,6 +3,18 @@
 #include <string.h>
 #include <stdbool.h>
 
+int is_prime(int number) {
+	int maxdivider, divider, mod;
+	maxdivider = number / 2;
+	for (divider = 2; divider <= maxdivider; divider++) {
+		mod = number % divider;
+		if (mod == 0) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
 int main(int argc, char *argv[]) {
 	int output_count, number, divider, maxdivider, mod, cycle_count;
 	bool prime = false;
@@ -23,16 +35,7 @@ int main(int argc, char *argv[]) {
 	}
 	
 	for (cycle_count = 0; cycle_count < output_count; number++) {
-		maxdivider = number / 2;
-		prime = true;
-		for (divider = 2; divider <= maxdivider; divider++) {
-			mod = number % divider;
-			if (mod == 0) {
-				prime = false;
-				break;
-			}
-		}
-		if (prime == true) {
+		if (is_prime(number) == 1) {
 			printf("%d\n", number);
 			cycle_count++;
 		}
