@@ -1,8 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
 
+//convert launch arguments to numbers, also checks whether input is number
+int input_conversion(char input[]) {
+	int number;
+	for (int i = 0; input[i] != '\0'; i++) { 
+        if((input[i] - 48)>=0 && (input[i] - 48)<10 ){
+			number = number * 10 + (input[i] - 48);
+		} else {
+			printf("invalid input - not a number\n");
+			exit(3);
+		}
+	return number;
+	}
+}
+
+//check whether number is a prime number
 int is_prime(int number) {
 	int maxdivider, divider, mod;
 	if (number == 1 || number == 0) {
@@ -22,17 +35,17 @@ int main(int argc, char *argv[]) {
 	int output_count, number, cycle_count;
 	
 	if (argc > 1) {
-		number = atoi(argv[1]);
+		number = input_conversion(argv[1]);
 		if (argc == 2) {
 			output_count = 1;
 		} else if (argc == 3) {
-			output_count = atoi(argv[2]);
+			output_count = input_conversion(argv[2]);
 		} else {
-			printf("too many inputs");
+			printf("too many inputs\n");
 			return 2;
 		}
 	} else {
-		printf("no input");
+		printf("no input\n");
 		return 1;
 	}
 	
