@@ -5,6 +5,9 @@
 
 int is_prime(int number) {
 	int maxdivider, divider, mod;
+	if (number == 1 || number == 0) {
+		return 0;
+	}
 	maxdivider = number / 2;
 	for (divider = 2; divider <= maxdivider; divider++) {
 		mod = number % divider;
